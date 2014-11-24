@@ -69,32 +69,4 @@ class FatTree(Topo):
         
         return (aggrSwitches, torSwitches, hosts) 
 
-#class FatTreePod(Topo):
-#    "Create a pod in a fat-tree"
-
-#    def __init__(self, podId, k):
-#        Topo.__init__(self)
-
-#        self.podId = podId 
-#        self.aggrSwitches = []
-#        self.torSwitches = []
-#        self.hosts = []
-
-#        #aggregate and tor
-#        for i in range(0, k/2):
-#            self.aggrSwitches.append(self.addSwitch("as_" + podId + str(i)))
-#            self.torSwitches.append(self.addSwitch("ts_" + podId + str(i)))
-
-#        #tor <--> aggregate
-#        for tor in range(0, len(self.torSwitches)):
-#            for aggr in range(0, len(self.aggrSwitches)):
-#                self.addLink(self.torSwitches[tor], self.aggrSwitches[aggr])
-        
-#        #host <--> tor
-#            #for tor in range(0, len(self.torSwitches)):
-#            #    for host in range(tor*k/2, (tor+1)*k/2):
-#            #        h = self.addHost("h_" + podId + "_" + str(tor))
-#            #        self.hosts.append(h)
-#            #        self.addLink(tor, h)
-
 topos = {'fattree': (lambda k: FatTree(k))}
